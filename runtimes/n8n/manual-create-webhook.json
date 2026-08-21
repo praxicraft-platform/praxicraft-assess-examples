@@ -1,0 +1,67 @@
+{
+  "name": "Manual \u2192 Create webhook",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual",
+      "name": "When clicking \u2018Test workflow\u2019",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "webhook",
+        "operation": "create",
+        "url": "https://example.com/hooks/praxicraft",
+        "events": [
+          "candidate.passed",
+          "assessment.completed"
+        ]
+      },
+      "id": "action-Create webhook",
+      "name": "Create webhook",
+      "type": "n8n-nodes-praxicraft-assess.praxicraftAssess",
+      "typeVersion": 1,
+      "position": [
+        280,
+        0
+      ],
+      "credentials": {
+        "praxicraftAssessApi": {
+          "id": "REPLACE",
+          "name": "Praxicraft Assess API"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "When clicking \u2018Test workflow\u2019": {
+      "main": [
+        [
+          {
+            "node": "Create webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "scenario": "08-webhook-admin",
+    "pattern": "manual\u2192webhook"
+  },
+  "tags": [
+    {
+      "name": "praxicraft-assess"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "name": "Manual \u2192 Create interview",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual",
+      "name": "When clicking \u2018Test workflow\u2019",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "interview",
+        "operation": "create",
+        "candidateEmail": "candidate@example.com",
+        "candidateName": "Example"
+      },
+      "id": "action-Create interview",
+      "name": "Create interview",
+      "type": "n8n-nodes-praxicraft-assess.praxicraftAssess",
+      "typeVersion": 1,
+      "position": [
+        280,
+        0
+      ],
+      "credentials": {
+        "praxicraftAssessApi": {
+          "id": "REPLACE",
+          "name": "Praxicraft Assess API"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "When clicking \u2018Test workflow\u2019": {
+      "main": [
+        [
+          {
+            "node": "Create interview",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "scenario": "07-interview-room",
+    "pattern": "manual\u2192interview"
+  },
+  "tags": [
+    {
+      "name": "praxicraft-assess"
+    }
+  ]
+}

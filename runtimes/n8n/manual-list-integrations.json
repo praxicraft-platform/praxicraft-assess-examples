@@ -1,0 +1,62 @@
+{
+  "name": "Manual \u2192 List integrations",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual",
+      "name": "When clicking \u2018Test workflow\u2019",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "integration",
+        "operation": "getAll"
+      },
+      "id": "action-List integrations",
+      "name": "List integrations",
+      "type": "n8n-nodes-praxicraft-assess.praxicraftAssess",
+      "typeVersion": 1,
+      "position": [
+        280,
+        0
+      ],
+      "credentials": {
+        "praxicraftAssessApi": {
+          "id": "REPLACE",
+          "name": "Praxicraft Assess API"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "When clicking \u2018Test workflow\u2019": {
+      "main": [
+        [
+          {
+            "node": "List integrations",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "scenario": "09-integrations",
+    "pattern": "manual\u2192integrations"
+  },
+  "tags": [
+    {
+      "name": "praxicraft-assess"
+    }
+  ]
+}

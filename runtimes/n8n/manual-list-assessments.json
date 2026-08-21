@@ -1,0 +1,62 @@
+{
+  "name": "Manual \u2192 List assessments",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual",
+      "name": "When clicking \u2018Test workflow\u2019",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "assessment",
+        "operation": "getAll"
+      },
+      "id": "action-List assessments",
+      "name": "List assessments",
+      "type": "n8n-nodes-praxicraft-assess.praxicraftAssess",
+      "typeVersion": 1,
+      "position": [
+        280,
+        0
+      ],
+      "credentials": {
+        "praxicraftAssessApi": {
+          "id": "REPLACE",
+          "name": "Praxicraft Assess API"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "When clicking \u2018Test workflow\u2019": {
+      "main": [
+        [
+          {
+            "node": "List assessments",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "scenario": "01-quickstart",
+    "pattern": "manual\u2192list"
+  },
+  "tags": [
+    {
+      "name": "praxicraft-assess"
+    }
+  ]
+}

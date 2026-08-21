@@ -1,0 +1,2 @@
+import com.praxicraft.assess.Client; import java.util.*;
+public class Main { public static void main(String[] a) throws Exception { Client c=new Client(); String slug=System.getenv().getOrDefault("PRAXICRAFT_PIPELINE_SLUG","engineering-hiring"); System.out.println(c.pipelines().enroll(slug, Map.of("email","candidate@example.com","name","Example"))); System.out.println(c.pipelines().listEnrollments(slug, null)); } }

@@ -1,0 +1,71 @@
+{
+  "name": "Praxicraft pipeline completed \u2192 Slack",
+  "nodes": [
+    {
+      "parameters": {
+        "events": [
+          "pipeline.completed"
+        ]
+      },
+      "id": "trigger-pipeline.completed",
+      "name": "On pipeline completed",
+      "type": "n8n-nodes-praxicraft-assess.praxicraftAssessTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "credentials": {
+        "praxicraftAssessApi": {
+          "id": "REPLACE",
+          "name": "Praxicraft Assess API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "#hiring"
+        },
+        "text": "\ud83c\udfc1 Praxicraft: pipeline completed\\n{{ $json }}"
+      },
+      "id": "slack-Post to Slack",
+      "name": "Post to Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2,
+      "position": [
+        280,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "On pipeline completed": {
+      "main": [
+        [
+          {
+            "node": "Post to Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "scenario": "event:pipeline.completed",
+    "pattern": "trigger\u2192slack"
+  },
+  "tags": [
+    {
+      "name": "praxicraft-assess"
+    }
+  ]
+}

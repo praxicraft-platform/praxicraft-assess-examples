@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "praxicraft-assess": {
+      "command": "npx",
+      "args": ["-y", "@praxicraft/assess-mcp"],
+      "env": {
+        "PRAXICRAFT_API_KEY": "ct_test_xxxxxxxxxxxxxxxx"
+      }
+    }
+  }
+}

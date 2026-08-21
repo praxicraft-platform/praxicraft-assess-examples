@@ -1,0 +1,71 @@
+{
+  "name": "ATS webhook \u2192 Create invitation",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ats-hire",
+        "responseMode": "onReceived"
+      },
+      "id": "ats-hook",
+      "name": "ATS webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "ats-hire"
+    },
+    {
+      "parameters": {
+        "resource": "invitation",
+        "operation": "create",
+        "assessment": "={{ $json.assessment_slug || 'senior-backend-screen' }}",
+        "email": "={{ $json.email }}",
+        "name": "={{ $json.name }}",
+        "sendEmail": true
+      },
+      "id": "action-Invite from ATS",
+      "name": "Invite from ATS",
+      "type": "n8n-nodes-praxicraft-assess.praxicraftAssess",
+      "typeVersion": 1,
+      "position": [
+        280,
+        0
+      ],
+      "credentials": {
+        "praxicraftAssessApi": {
+          "id": "REPLACE",
+          "name": "Praxicraft Assess API"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "ATS webhook": {
+      "main": [
+        [
+          {
+            "node": "Invite from ATS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "scenario": "01-quickstart",
+    "pattern": "ats\u2192invite"
+  },
+  "tags": [
+    {
+      "name": "praxicraft-assess"
+    }
+  ]
+}

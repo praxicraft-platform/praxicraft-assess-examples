@@ -1,0 +1,2 @@
+import com.praxicraft.assess.Client; import java.util.*;
+public class Main { public static void main(String[] a) throws Exception { Client c=new Client(); String slug=System.getenv().getOrDefault("PRAXICRAFT_ASSESSMENT_SLUG","senior-backend-screen"); System.out.println(c.invites().bulkCreate(slug, Map.of("candidates", List.of(Map.of("email","alice@example.com","name","Alice","send_email",false), Map.of("email","bob@example.com","name","Bob","send_email",false))))); } }

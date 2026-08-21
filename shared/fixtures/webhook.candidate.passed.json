@@ -1,0 +1,10 @@
+{
+  "id": "evt_example",
+  "type": "candidate.passed",
+  "created_at": "2026-01-15T12:00:00Z",
+  "data": {
+    "invite_token": "00000000-0000-0000-0000-000000000001",
+    "assessment_slug": "senior-backend-screen",
+    "email": "candidate@example.com"
+  }
+}

@@ -1,0 +1,2 @@
+import com.praxicraft.assess.Client; import java.util.*;
+public class Main { public static void main(String[] a) throws Exception { Client c=new Client(); Map wh=c.webhooks().create(Map.of("url","https://example.com/hooks/praxicraft","events",List.of("candidate.passed"))); System.out.println(wh); String id=(String)wh.get("id"); System.out.println(c.webhooks().test(id)); System.out.println(c.webhooks().deliveries(id, null)); } }

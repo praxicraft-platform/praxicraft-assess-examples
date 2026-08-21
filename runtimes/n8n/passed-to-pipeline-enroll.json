@@ -1,0 +1,75 @@
+{
+  "name": "candidate.passed \u2192 Pipeline enroll",
+  "nodes": [
+    {
+      "parameters": {
+        "events": [
+          "candidate.passed"
+        ]
+      },
+      "id": "trigger-candidate.passed",
+      "name": "On candidate passed",
+      "type": "n8n-nodes-praxicraft-assess.praxicraftAssessTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "credentials": {
+        "praxicraftAssessApi": {
+          "id": "REPLACE",
+          "name": "Praxicraft Assess API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "pipeline",
+        "operation": "enroll",
+        "pipeline": "engineering-hiring",
+        "email": "={{ $json.data.email || $json.email }}",
+        "name": "={{ $json.data.name || $json.name || 'Candidate' }}"
+      },
+      "id": "action-Enroll passer",
+      "name": "Enroll passer",
+      "type": "n8n-nodes-praxicraft-assess.praxicraftAssess",
+      "typeVersion": 1,
+      "position": [
+        280,
+        0
+      ],
+      "credentials": {
+        "praxicraftAssessApi": {
+          "id": "REPLACE",
+          "name": "Praxicraft Assess API"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "On candidate passed": {
+      "main": [
+        [
+          {
+            "node": "Enroll passer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "scenario": "06-pipeline-enroll",
+    "pattern": "passed\u2192enroll"
+  },
+  "tags": [
+    {
+      "name": "praxicraft-assess"
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "name": "Quota check \u2192 List assessments \u2192 Invite",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual",
+      "name": "When clicking \u2018Test workflow\u2019",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "organisation",
+        "operation": "stats"
+      },
+      "id": "action-Check quota",
+      "name": "Check quota",
+      "type": "n8n-nodes-praxicraft-assess.praxicraftAssess",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "credentials": {
+        "praxicraftAssessApi": {
+          "id": "REPLACE",
+          "name": "Praxicraft Assess API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "assessment",
+        "operation": "getAll"
+      },
+      "id": "action-Pick assessment",
+      "name": "Pick assessment",
+      "type": "n8n-nodes-praxicraft-assess.praxicraftAssess",
+      "typeVersion": 1,
+      "position": [
+        440,
+        0
+      ],
+      "credentials": {
+        "praxicraftAssessApi": {
+          "id": "REPLACE",
+          "name": "Praxicraft Assess API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "invitation",
+        "operation": "create",
+        "assessment": "={{ $json.results[0].slug || 'senior-backend-screen' }}",
+        "email": "candidate@example.com",
+        "name": "Example",
+        "sendEmail": false
+      },
+      "id": "action-Invite",
+      "name": "Invite",
+      "type": "n8n-nodes-praxicraft-assess.praxicraftAssess",
+      "typeVersion": 1,
+      "position": [
+        660,
+        0
+      ],
+      "credentials": {
+        "praxicraftAssessApi": {
+          "id": "REPLACE",
+          "name": "Praxicraft Assess API"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "When clicking \u2018Test workflow\u2019": {
+      "main": [
+        [
+          {
+            "node": "Check quota",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check quota": {
+      "main": [
+        [
+          {
+            "node": "Pick assessment",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pick assessment": {
+      "main": [
+        [
+          {
+            "node": "Invite",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "scenario": "02-quota-gate+01-quickstart",
+    "pattern": "multi-step"
+  },
+  "tags": [
+    {
+      "name": "praxicraft-assess"
+    }
+  ]
+}

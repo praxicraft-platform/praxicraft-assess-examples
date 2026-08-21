@@ -1,0 +1,93 @@
+{
+  "name": "pipeline.advanced \u2192 Slack + ATS HTTP",
+  "nodes": [
+    {
+      "parameters": {
+        "events": [
+          "pipeline.advanced"
+        ]
+      },
+      "id": "trigger-pipeline.advanced",
+      "name": "On pipeline advanced",
+      "type": "n8n-nodes-praxicraft-assess.praxicraftAssessTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "credentials": {
+        "praxicraftAssessApi": {
+          "id": "REPLACE",
+          "name": "Praxicraft Assess API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "#hiring"
+        },
+        "text": "\u27a1\ufe0f Pipeline advanced: {{ $json }}"
+      },
+      "id": "slack-Stage change",
+      "name": "Stage change",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2,
+      "position": [
+        260,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://example.com/hooks/pipeline",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}"
+      },
+      "id": "http-Sync ATS stage",
+      "name": "Sync ATS stage",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        260,
+        80
+      ]
+    }
+  ],
+  "connections": {
+    "On pipeline advanced": {
+      "main": [
+        [
+          {
+            "node": "Stage change",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Sync ATS stage",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "scenario": "29-event-pipeline-advanced",
+    "pattern": "fan-out"
+  },
+  "tags": [
+    {
+      "name": "praxicraft-assess"
+    }
+  ]
+}

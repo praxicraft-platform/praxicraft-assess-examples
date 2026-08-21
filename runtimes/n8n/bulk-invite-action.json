@@ -1,0 +1,18 @@
+{
+  "name": "Praxicraft bulk invite",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "invitation",
+        "operation": "bulkCreate",
+        "assessment": "={{ $json.assessment_slug }}",
+        "candidates": "={{ $json.candidates }}"
+      },
+      "name": "Bulk Invite",
+      "type": "n8n-nodes-praxicraft-assess.praxicraftAssess",
+      "typeVersion": 1,
+      "position": [0, 0]
+    }
+  ],
+  "meta": { "scenario": "03-bulk-invites" }
+}

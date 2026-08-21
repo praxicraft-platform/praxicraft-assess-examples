@@ -1,0 +1,69 @@
+{
+  "name": "Praxicraft assessment completed \u2192 HTTP",
+  "nodes": [
+    {
+      "parameters": {
+        "events": [
+          "assessment.completed"
+        ]
+      },
+      "id": "trigger-assessment.completed",
+      "name": "On assessment completed",
+      "type": "n8n-nodes-praxicraft-assess.praxicraftAssessTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "credentials": {
+        "praxicraftAssessApi": {
+          "id": "REPLACE",
+          "name": "Praxicraft Assess API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://example.com/hooks/praxicraft",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}"
+      },
+      "id": "http-Forward to ATS",
+      "name": "Forward to ATS",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        280,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "On assessment completed": {
+      "main": [
+        [
+          {
+            "node": "Forward to ATS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "scenario": "event:assessment.completed",
+    "pattern": "trigger\u2192http"
+  },
+  "tags": [
+    {
+      "name": "praxicraft-assess"
+    }
+  ]
+}

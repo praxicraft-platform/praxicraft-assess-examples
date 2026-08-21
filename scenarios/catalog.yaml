@@ -1,0 +1,151 @@
+# Canonical scenario catalog — paths must exist (see scripts/check-matrix.sh)
+scenarios:
+  - id: 01-quickstart
+    title: List assessments, create invite, fetch result
+    scopes: [assessments:read, invitations:write, candidates:read]
+    runtimes: [python, node, go, php, ruby, java, dotnet, curl, cli]
+
+  - id: 02-quota-gate
+    title: Check org stats / invite quota before sending
+    scopes: [organisation:read]
+    runtimes: [python, node, go, php, ruby, java, dotnet, curl, cli]
+
+  - id: 03-bulk-invites
+    title: Bulk invite from CSV / JSON
+    scopes: [invitations:write]
+    runtimes: [python, node, go, php, ruby, java, dotnet, curl, cli]
+
+  - id: 04-build-assessment
+    title: Create assessment, attach cases, activate
+    scopes: [assessments:write, cases:read]
+    runtimes: [python, node, go, php, ruby, java, dotnet, curl, cli]
+
+  - id: 05-webhook-receiver
+    title: Verify X-Praxicraft-Signature on raw body
+    scopes: []
+    runtimes: [python, node, go, php, ruby, java, dotnet, curl, cli]
+
+  - id: 06-pipeline-enroll
+    title: Enroll candidate and list enrollments
+    scopes: [pipelines:write, pipelines:read]
+    runtimes: [python, node, go, php, ruby, java, dotnet, curl, cli]
+
+  - id: 07-interview-room
+    title: Create interview and fetch analysis
+    scopes: [interviews:write, interviews:read]
+    runtimes: [python, node, curl, cli, go, php, ruby]
+
+  - id: 08-webhook-admin
+    title: Create webhook, test, list deliveries
+    scopes: [webhooks:write, webhooks:read]
+    runtimes: [python, node, go, php, ruby, java, dotnet, curl, cli]
+
+  - id: 09-integrations
+    title: List integrations, connect URL, test provider
+    scopes: [organisation:read]
+    runtimes: [python, node, curl, cli, go, php, ruby]
+
+  - id: 10-list-invites
+    title: List invitations with filters
+    scopes: [invitations:read]
+    runtimes: [python, node, go, php, ruby, java, dotnet, curl, cli]
+
+  - id: 11-remind-cancel
+    title: Remind then cancel an invite
+    scopes: [invitations:write]
+    runtimes: [python, node, go, php, ruby, java, dotnet, curl, cli]
+
+  - id: 12-org-team-audit
+    title: Org team + audit log
+    scopes: [organisation:read]
+    runtimes: [python, node, curl, cli, go, php, ruby]
+
+  - id: 13-org-squads
+    title: List squads and members
+    scopes: [organisation:read]
+    runtimes: [python, node, curl, cli, go, php, ruby]
+
+  - id: 14-platform-cases
+    title: Browse platform case library
+    scopes: [cases:read]
+    runtimes: [python, node, curl, cli, go, php, ruby]
+
+  - id: 15-org-cases-crud
+    title: Create/get/update org case
+    scopes: [cases:write, cases:read]
+    runtimes: [python, node, curl, cli, go, php, ruby]
+
+  - id: 16-assessment-cases
+    title: List/replace/remove assessment cases
+    scopes: [assessments:write]
+    runtimes: [python, node, curl, cli, go, php, ruby]
+
+  - id: 17-assessment-duplicate
+    title: Duplicate an assessment
+    scopes: [assessments:write]
+    runtimes: [python, node, curl, cli, go, php, ruby]
+
+  - id: 18-assessment-results-page
+    title: Paginate assessment results
+    scopes: [candidates:read]
+    runtimes: [python, node, go, php, ruby, java, dotnet, curl, cli]
+
+  - id: 19-pipeline-bulk-enroll
+    title: Bulk enroll into pipeline
+    scopes: [pipelines:write]
+    runtimes: [python, node, curl, cli, go, php, ruby]
+
+  - id: 20-pipeline-hold-reject
+    title: Hold, unhold, reject enrollment
+    scopes: [pipelines:write]
+    runtimes: [python, node, curl, cli, go, php, ruby]
+
+  - id: 21-webhook-retry
+    title: Retry a failed webhook delivery
+    scopes: [webhooks:write]
+    runtimes: [python, node, curl, cli, go, php, ruby]
+
+  - id: 22-interview-bulk
+    title: Bulk create interview rooms
+    scopes: [interviews:write]
+    runtimes: [python, node, curl, cli, go, php, ruby]
+
+  - id: 23-interview-lifecycle
+    title: Cancel / reschedule / share interview
+    scopes: [interviews:write]
+    runtimes: [python, node, curl, cli, go, php, ruby]
+
+  - id: 24-interview-templates
+    title: CRUD interview templates
+    scopes: [interviews:write, interviews:read]
+    runtimes: [python, node, curl, cli, go, php, ruby]
+
+  - id: 25-interview-analytics
+    title: Interview analytics + org-cases
+    scopes: [interviews:read]
+    runtimes: [python, node, curl, cli, go, php, ruby]
+
+  - id: 26-event-candidate-passed
+    title: Handle candidate.passed payload
+    scopes: []
+    runtimes: [python, node, curl, cli]
+
+  - id: 27-event-candidate-failed
+    title: Handle candidate.failed payload
+    scopes: []
+    runtimes: [python, node, curl, cli]
+
+  - id: 28-event-assessment-completed
+    title: Handle assessment.completed
+    scopes: []
+    runtimes: [python, node, curl, cli]
+
+  - id: 29-event-pipeline-advanced
+    title: Handle pipeline.advanced
+    scopes: []
+    runtimes: [python, node, curl, cli]
+
+  - id: 30-event-interview-ready
+    title: Handle interview.analysis_ready
+    scopes: []
+    runtimes: [python, node, curl, cli]
