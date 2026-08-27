@@ -5,4 +5,4 @@ KEY="${PRAXICRAFT_API_KEY:?set PRAXICRAFT_API_KEY}"
 AUTH=(-H "Authorization: Bearer $KEY" -H "Content-Type: application/json" -H "Accept: application/json")
 API="$BASE/api/v1/public"
 curl -sS "$API/interviews/analytics/" "${AUTH[@]}" | jq .
-curl -sS "$API/interviews/org-cases/" "${AUTH[@]}" | jq .
+curl -sS "$API/interviews/org-tasks/" "${AUTH[@]}" | jq .

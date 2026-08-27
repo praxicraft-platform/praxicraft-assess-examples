@@ -16,8 +16,8 @@ scenarios:
     runtimes: [python, node, go, php, ruby, java, dotnet, curl, cli]
 
   - id: 04-build-assessment
-    title: Create assessment, attach cases, activate
-    scopes: [assessments:write, cases:read]
+    title: Create assessment, attach tasks, activate
+    scopes: [assessments:write, tasks:read]
     runtimes: [python, node, go, php, ruby, java, dotnet, curl, cli]
 
   - id: 05-webhook-receiver
@@ -65,18 +65,18 @@ scenarios:
     scopes: [organisation:read]
     runtimes: [python, node, curl, cli, go, php, ruby]
 
-  - id: 14-platform-cases
-    title: Browse platform case library
-    scopes: [cases:read]
+  - id: 14-platform-tasks
+    title: Browse platform task library
+    scopes: [tasks:read]
     runtimes: [python, node, curl, cli, go, php, ruby]
 
-  - id: 15-org-cases-crud
-    title: Create/get/update org case
-    scopes: [cases:write, cases:read]
+  - id: 15-org-tasks-crud
+    title: Create/get/update org task
+    scopes: [tasks:write, tasks:read]
     runtimes: [python, node, curl, cli, go, php, ruby]
 
-  - id: 16-assessment-cases
-    title: List/replace/remove assessment cases
+  - id: 16-assessment-tasks
+    title: List/replace/remove assessment tasks
     scopes: [assessments:write]
     runtimes: [python, node, curl, cli, go, php, ruby]
 
@@ -121,7 +121,7 @@ scenarios:
     runtimes: [python, node, curl, cli, go, php, ruby]
 
   - id: 25-interview-analytics
-    title: Interview analytics + org-cases
+    title: Interview analytics + org-tasks
     scopes: [interviews:read]
     runtimes: [python, node, curl, cli, go, php, ruby]
 
