@@ -6,8 +6,8 @@ func main() {
   if err != nil { panic(err) }
   slug, _ := a["slug"].(string)
   fmt.Println("created", slug)
-  if id := os.Getenv("PRAXICRAFT_CASE_ID"); id != "" {
-    _, err = c.Assessments.AttachCases(slug, []map[string]any{{"case_id": id, "source": "platform"}})
+  if id := os.Getenv("PRAXICRAFT_TASK_ID"); id != "" {
+    _, err = c.Assessments.AttachTasks(slug, []map[string]any{{"task_id": id, "source": "platform"}})
     if err != nil { panic(err) }
   }
 }

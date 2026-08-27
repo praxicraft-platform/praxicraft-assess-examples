@@ -20,7 +20,7 @@ Canonical source: [`scenarios/catalog.yaml`](scenarios/catalog.yaml)
 | `01-quickstart` | list assessments → invite → result |
 | `02-quota-gate` | org / invite quota |
 | `03-bulk-invites` | bulk create |
-| `04-build-assessment` | create → attach cases → activate |
+| `04-build-assessment` | create → attach tasks → activate |
 | `05-webhook-receiver` | HMAC verify |
 | `06-pipeline-enroll` | enroll + list enrollments |
 | `07-interview-room` | create interview + analysis |
@@ -30,9 +30,9 @@ Canonical source: [`scenarios/catalog.yaml`](scenarios/catalog.yaml)
 | `11-remind-cancel` | remind + cancel |
 | `12-org-team-audit` | team + audit log |
 | `13-org-squads` | squads + members |
-| `14-platform-cases` | platform case library |
-| `15-org-cases-crud` | org case create/get/update |
-| `16-assessment-cases` | assessment case list/replace/remove |
+| `14-platform-tasks` | platform task library |
+| `15-org-tasks-crud` | org task create/get/update |
+| `16-assessment-tasks` | assessment task list/replace/remove |
 | `17-assessment-duplicate` | duplicate assessment |
 | `18-assessment-results-page` | paginate results |
 | `19-pipeline-bulk-enroll` | bulk enroll |
@@ -41,7 +41,7 @@ Canonical source: [`scenarios/catalog.yaml`](scenarios/catalog.yaml)
 | `22-interview-bulk` | bulk create interviews |
 | `23-interview-lifecycle` | reschedule / share / cancel |
 | `24-interview-templates` | template CRUD |
-| `25-interview-analytics` | analytics + org-cases |
+| `25-interview-analytics` | analytics + org-tasks |
 | `26`–`30` | event payload recipes (passed/failed/completed/pipeline/interview) |
 
 Implementations: `runtimes/<python|node|go|php|ruby|java|dotnet|curl|cli>/<id>/`
